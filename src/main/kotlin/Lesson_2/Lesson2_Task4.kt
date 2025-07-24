@@ -1,10 +1,11 @@
 package org.example.Lesson_2
 
 fun main() {
-    val crystalOre: Int = 7
+    val crystalOre = 7
     val ironOre = 11
-    val buff = 0.2
+    val buff = 20
+    val percent = 100.0
 
-    println("Бафф кристалической руды " + (crystalOre * buff).toInt())
-    println("Бафф железной руды " + (ironOre * buff).toInt())
+    println("Бафф кристалической руды " + (crystalOre * buff / percent).toInt())
+    println("Бафф железной руды " + (ironOre * buff / percent).toInt())
 }
