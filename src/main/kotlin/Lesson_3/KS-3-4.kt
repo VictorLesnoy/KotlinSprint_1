@@ -7,6 +7,7 @@ fun main() {
     var moveFromIndex = 2
     var moveToIndex = 4
     println("Ход $moveNumber с клетки $moveFromLetter$moveFromIndex на клетку $moveToLetter$moveToIndex")
+
     moveNumber = 10
     moveFromLetter = "D"
     moveFromIndex = 2
