@@ -6,15 +6,18 @@ fun main() {
     val provisions = 60
     val wetherGood = true
     val result: Boolean = ((withoutDamage == WITHOUT_DAMAGE) &&
-            (crew in 55.. 70) &&
-            (provisions > 50) &&
+            (crew in CREW_MIN.. CREW_MAX) &&
+            (provisions > PROVISION_MIN) &&
             (wetherGood == WETHER_GOOD))
             ||
             (!(withoutDamage == WITHOUT_DAMAGE) &&
-            (crew == 70) &&
-            (provisions > 50) &&
+            (crew == CREW_MAX) &&
+            (provisions > PROVISION_MIN) &&
             (wetherGood == WETHER_GOOD))
     println("Корабль может приступить к плаванию: $result")
 }
 const val WITHOUT_DAMAGE = true
+const val CREW_MIN = 55
+const val CREW_MAX = 70
+const val PROVISION_MIN = 50
 const val WETHER_GOOD = true
