@@ -7,7 +7,7 @@ fun main() {
     println("Докажите, что вы не бот - решите пример: $randomNumberOne + $randomNumberTwo =?")
     val answer = readln().toInt()
 
-        if (answer == randomNumberOne + randomNumberTwo) {
+    if (answer == randomNumberOne + randomNumberTwo) {
         println("Добро пожаловать!")
     } else {
         println("Доступ запрещен.")
