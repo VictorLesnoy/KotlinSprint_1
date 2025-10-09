@@ -10,6 +10,6 @@ fun main() {
     if (answer == randomNumberOne + randomNumberTwo) {
         println("Добро пожаловать!")
     } else {
-        println("Доступ запрещен.")
+        println("Доступ запрещен!")
     }
 }
