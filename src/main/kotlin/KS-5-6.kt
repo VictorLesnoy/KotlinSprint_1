@@ -5,7 +5,7 @@ fun main() {
     val weight = readln().toDouble()
     println("Введите ваш рост (в сантиметрах):")
     val height = readln().toDouble()
-    val imtN = weight / Math.pow((height/100), 2.0)
+    val imtN = weight / Math.pow((height/ METER), 2.0)
     val imt = "%.2f".format(imtN)
 
     when(imtN) {
@@ -16,3 +16,4 @@ fun main() {
     }
 
 }
+const val METER = 100
