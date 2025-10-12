@@ -5,15 +5,19 @@ fun main() {
     val weight = readln().toDouble()
     println("Введите ваш рост (в сантиметрах):")
     val height = readln().toDouble()
-    val imtN = weight / Math.pow((height/ METER), 2.0)
-    val imt = "%.2f".format(imtN)
+    val imtCalculated = weight / Math.pow((height / METER), 2.0)
+    val imt = "%.2f".format(imtCalculated)
 
-    when(imtN) {
-        in 0.0..<18.5 -> println("ИМТ = $imt Недостаточная масса тела")
-        in 18.5..<25.0 -> println("ИМТ = $imt Нормальная масса тела.")
-        in 25.0..<30.0 -> println("ИМТ = $imt Избыточная масса тела.")
+    when(imtCalculated) {
+        in ZERO..< UNDERWRIGHT -> println("ИМТ = $imt Недостаточная масса тела")
+        in UNDERWRIGHT..< NORMALWEIGHT -> println("ИМТ = $imt Нормальная масса тела.")
+        in NORMALWEIGHT..< EXCESSWEIGHT -> println("ИМТ = $imt Избыточная масса тела.")
         else -> println("ИМТ = $imt Ожирение")
     }
 
 }
 const val METER = 100
+const val ZERO = 0.0
+const val UNDERWRIGHT = 18.5
+const val NORMALWEIGHT = 25.0
+const val EXCESSWEIGHT = 30.0
