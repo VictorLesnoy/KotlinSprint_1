@@ -11,7 +11,7 @@ fun main() {
 
     if (answerOne == numberOne && answerTwo == numberTwo || answerOne == numberTwo && answerTwo == numberOne) {
         println("Поздравляем! Вы выиграли главный приз! Загаданные числа $numberOne и $numberTwo")
-    } else if (answerOne == numberOne || answerTwo == numberTwo) {
+    } else if (answerOne == numberOne || answerTwo == numberTwo || answerOne == numberTwo || answerTwo == numberOne) {
         println("Вы выиграли утешительный приз! Загаданные числа $numberOne и $numberTwo")
     } else {
         println("Неудача! Загаданные числа $numberOne и $numberTwo")
