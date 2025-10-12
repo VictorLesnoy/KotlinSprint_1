@@ -1,26 +1,21 @@
 package org.example
+import kotlin.math.min
 
 fun main() {
-    val randomRange = 0..42
-    val randomNumberOne = randomRange.random()
-    val randomNumberTwo = randomRange.random()
-    val randomNumberThree = randomRange.random()
-    //println("$randomNumberOne, $randomNumberTwo, $randomNumberThree")
-    println("Введите первое числоот 0 до 42")
-    val answerOne = readln().toInt()
-    println("ВВедите второе число от 0 до 42")
-    val answerTwo = readln().toInt()
-    println("ВВедите третье число от 0 до 42")
-    val answerThree = readln().toInt()
-    if (answerOne == randomNumberOne && answerTwo == randomNumberTwo && answerThree ==randomNumberThree) {
-        println("Поздравляем! Вы выиграли джекпот!")
-    } else if ((answerOne == randomNumberOne && answerTwo == randomNumberTwo && answerThree !=randomNumberThree) || (answerOne == randomNumberOne && answerTwo != randomNumberTwo && answerThree ==randomNumberThree) || (answerOne != randomNumberOne && answerTwo == randomNumberTwo && answerThree ==randomNumberThree)) {
-        println("Поздравляем! Вы выиграли крупный приз!")
-    } else if (answerOne == randomNumberOne || answerTwo == randomNumberTwo || answerThree == randomNumberThree) {
-        println("Вы выиграли утешительный приз!")
-    } else {
-        println("Неудача! Вы не угадали ни одного числа.")
+    val randomRange = (0..42)
+    val randomNumber = List(3) { randomRange.random() }
+    println(randomNumber)// ОСТАВИЛ ДЛЯ ПРОВЕРКИ РАБОТОСПОСОБНОСТИ
+    println("Введите через пробел три числа от 0 до 42")
+    val answer = readLine()!!.split(" ").map { it.toInt() }
 
+    val concidences = randomNumber.intersect(answer).map { x -> min(randomNumber.count { it == x }, answer.count { it == x }) }.sum()
+
+    when (concidences) {
+        0 -> println("Неудача! Вы не угадали ни одного числа.")
+        1 -> println("Вы выиграли утешительный приз!")
+        2 -> println("Поздравляем! Вы выиграли крупный приз!")
+        3 -> println("Поздравляем! Вы выиграли джекпот!")
     }
-    println("Выигрышные числа:$randomNumberOne, $randomNumberTwo, $randomNumberThree")
+
+    println("Выигрышные числа:${randomNumber[0]}, ${randomNumber[1]}, ${randomNumber[2]}")
 }
