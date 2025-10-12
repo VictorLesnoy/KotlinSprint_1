@@ -9,7 +9,7 @@ fun main() {
     println("ВВедите второе число от 0 до 42")
     val answerTwo = readln().toInt()
 
-    if (answerOne == numberOne && answerTwo == numberTwo) {
+    if (answerOne == numberOne && answerTwo == numberTwo || answerOne == numberTwo && answerTwo == numberOne) {
         println("Поздравляем! Вы выиграли главный приз!")
     } else if (answerOne == numberOne || answerTwo == numberTwo) {
         println("Вы выиграли утешительный приз!")
