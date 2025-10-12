@@ -10,10 +10,10 @@ fun main() {
     val answerTwo = readln().toInt()
 
     if (answerOne == numberOne && answerTwo == numberTwo || answerOne == numberTwo && answerTwo == numberOne) {
-        println("Поздравляем! Вы выиграли главный приз!")
+        println("Поздравляем! Вы выиграли главный приз! Загаданные числа $numberOne и $numberTwo")
     } else if (answerOne == numberOne || answerTwo == numberTwo) {
-        println("Вы выиграли утешительный приз!")
+        println("Вы выиграли утешительный приз! Загаданные числа $numberOne и $numberTwo")
     } else {
-        println("Неудача!")
+        println("Неудача! Загаданные числа $numberOne и $numberTwo")
     }
 }
