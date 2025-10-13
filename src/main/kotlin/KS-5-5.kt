@@ -1,12 +1,10 @@
 package org.example
-import kotlin.math.min
 
 fun main() {
     val randomRange = (0..42)
     val randomNumber = List(3) { randomRange.random() }
     println("Введите через пробел три числа от 0 до 42")
     val answer = readln().split(' ').map { it.toInt() }
-    //val concidences = randomNumber.intersect(answer).map { x -> min(randomNumber.count { it == x }, answer.count { it == x }) }.sum()
     val concidences = (answer.intersect(randomNumber)).size
 
     when (concidences) {
