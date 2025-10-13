@@ -4,11 +4,10 @@ import kotlin.math.min
 fun main() {
     val randomRange = (0..42)
     val randomNumber = List(3) { randomRange.random() }
-    println(randomNumber)// ОСТАВИЛ ДЛЯ ПРОВЕРКИ РАБОТОСПОСОБНОСТИ
     println("Введите через пробел три числа от 0 до 42")
-    val answer = readLine()!!.split(" ").map { it.toInt() }
-
-    val concidences = randomNumber.intersect(answer).map { x -> min(randomNumber.count { it == x }, answer.count { it == x }) }.sum()
+    val answer = readln().split(' ').map { it.toInt() }
+    //val concidences = randomNumber.intersect(answer).map { x -> min(randomNumber.count { it == x }, answer.count { it == x }) }.sum()
+    val concidences = (answer.intersect(randomNumber)).size
 
     when (concidences) {
         0 -> println("Неудача! Вы не угадали ни одного числа.")
