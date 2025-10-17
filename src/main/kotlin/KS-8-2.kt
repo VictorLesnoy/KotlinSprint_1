@@ -7,7 +7,6 @@ fun main() {
     val ingridient = readln().toString()
     for (i in ingridients) {
         if (i == ingridient) {
-            println(i)
             println("Ингридиент $i в рецепте есть")
             return
         }
