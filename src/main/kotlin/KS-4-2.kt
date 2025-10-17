@@ -1,5 +1,6 @@
 package org.example
 
+package org.example
 fun main() {
     var weight = 42
     var value = 120
