@@ -11,5 +11,4 @@ fun main() {
         println("Back to main screen")
     }
 }
-
 const val AGE_OF_MAJORITY = 18
