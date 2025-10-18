@@ -4,11 +4,11 @@ fun main() {
     val ingridients: Array<String> = arrayOf("молоко", "мука", "сметана", "соль", "сахар")
 
     println("Какой ингридиент ищем?")
-    val ingridient = readln().toString()
+    val ingridient = readln()
 
-        if (ingridients.contains(ingridient)) {
-            println("Ингридиент $ingridient в рецепте есть")
-        } else {
-            println("Такого ингридиента в рецепте нет.")
-        }
+    if (ingridient in ingridients) {
+        println("Ингридиент $ingridient в рецепте есть")
+    } else {
+        println("Такого ингридиента в рецепте нет.")
+    }
 }
