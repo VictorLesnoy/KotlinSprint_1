@@ -1,7 +1,5 @@
 package org.example
 
-import java.util.*
-
 fun main() {
 
     println("Сколько ингридиентов планируете?")
@@ -9,8 +7,8 @@ fun main() {
     val ingridients = Array(ingridientsQuantity) { "" }
     for (i in 0 until ingridientsQuantity) {
         println("Введите ингридиент ${i + 1}")
-        ingridients [i] = readln()
+        ingridients[i] = readln()
     }
-    println("Ваши ингридиенты: ${ingridients.joinToString (", ")}")
+    println("Ваши ингридиенты: ${ingridients.joinToString(", ")}")
 
 }
