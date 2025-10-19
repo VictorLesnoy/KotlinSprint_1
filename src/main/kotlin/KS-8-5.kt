@@ -3,14 +3,14 @@ package org.example
 import java.util.*
 
 fun main() {
-    var ingridients: Array<String> = arrayOf()
+
     println("Сколько ингридиентов планируете?")
     val ingridientsQuantity = readln().toInt()
-
-    for (i in 0..(ingridientsQuantity - 1)) {
+    val ingridients = Array(ingridientsQuantity) { "" }
+    for (i in 0 until ingridientsQuantity) {
         println("Введите ингридиент ${i + 1}")
-        ingridients += readln()
+        ingridients [i] = readln()
     }
-    println("Ваши ингридиенты: ${Arrays.toString(ingridients)}")
+    println("Ваши ингридиенты: ${ingridients.joinToString (", ")}")
 
 }
