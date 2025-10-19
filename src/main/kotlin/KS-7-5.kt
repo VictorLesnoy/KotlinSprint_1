@@ -1,19 +1,21 @@
 package org.example
 
 fun main() {
-    val password = ('A'..'Z') + ('a'..'z') + ('0'..'9')
-
+    val symbols = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+    var password = ""
     do {
-        print("Какая длинна пароля (не менее 6 символов)? ")
+        print("Какая длинна пароля (не менее $LENGTH символов)? ")
         var numbers = readln().toInt()
 
-        if (numbers > 6) {
+
+        if (numbers >= LENGTH) {
             for (i in 1..numbers) {
-                print(password.random())
+                password = password + (symbols.random())
             }
             break
         }
-    } while (numbers < 6)
+    } while (numbers < LENGTH)
 
-    println("\nВаш пароль готов!")
+    println("Ваш пароль: $password" )
 }
+const val LENGTH = 6
