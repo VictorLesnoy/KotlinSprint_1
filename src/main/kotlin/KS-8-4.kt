@@ -1,10 +1,8 @@
 package org.example
 
-import java.util.*
-
 fun main() {
     val ingridients: Array<String> = arrayOf("молоко", "мука", "сметана", "соль", "сахар")
-    println(ingridients.joinToString (", "))
+    println(ingridients.joinToString(", "))
 
     do {
 
@@ -21,5 +19,5 @@ fun main() {
             println("Такого ингридиента в рецепте нет.")
         }
     } while (ingridient !in ingridients)
-    println("Готово! Вы сохранили следующий список:\n${ingridients.joinToString (", ")}")
+    println("Готово! Вы сохранили следующий список:\n${ingridients.joinToString(", ")}")
 }
