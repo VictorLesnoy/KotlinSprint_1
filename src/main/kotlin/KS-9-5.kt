@@ -1,12 +1,12 @@
 package org.example
 
 fun main() {
-    var ingridients: MutableList<String> = mutableListOf()
+    val ingridients: MutableList<String> = mutableListOf()
     for (i in 0..4) {
 
          do {
              println("Ведите ингридиент ${i+1}")
-            var input = readln()
+            val input = readln()
 
             if (ingridients.contains(input)) {
                 println("Такой ингридиент уже есть")
@@ -18,7 +18,7 @@ fun main() {
         }while (ingridients.contains(input))
 
     }
-    var newIngridients = ingridients.sortedBy{it}
+    val newIngridients = ingridients.sortedBy{it}
     val result = newIngridients.mapIndexed { index, word ->
 
         if (index == 0) {
