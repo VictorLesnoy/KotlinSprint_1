@@ -19,14 +19,7 @@ fun main() {
 
     }
     val newIngridients = ingridients.sortedBy{it}
-    val result = newIngridients.mapIndexed { index, word ->
+    val result = newIngridients.joinToString(separator = ", ", postfix = ".").replaceFirstChar { it.uppercase() }
 
-        if (index == 0) {
-            word.replaceFirstChar { it.titlecase() }
-        } else {
-            word
-        }
-
-    }
     println("Список ингридиентов:\n$result")
 }
