@@ -1,8 +1,20 @@
 package org.example
 
 fun main() {
-    val login = getLogin()
-    val password = getPassword()
+
+    getAuthorization()
+
+}
+
+const val LOGIN = "StarLord"
+const val PASSWORD = "pOOrD0G"
+
+fun getAuthorization() {
+    println("Введите логин:")
+    val login = readlnOrNull()
+    println("Введите пароль:")
+    val password = readlnOrNull()
+
     if ((login == LOGIN) && (password == PASSWORD)) {
         getToken()
         println("Ваша корзина: яйца, хлеб, молоко")
@@ -10,20 +22,6 @@ fun main() {
         println("Логин или пароль не найдены.")
         null
     }
-
-}
-
-const val LOGIN = "StarLord"
-const val PASSWORD = "pOOrD0G"
-
-fun getLogin(): String? {
-    println("Введите логин:")
-    return readlnOrNull()
-}
-
-fun getPassword(): String? {
-    println("Введите пароль:")
-    return readlnOrNull()
 }
 
 fun getToken(): String {
