@@ -1,69 +1,92 @@
 package org.example
 
-fun main() {
-    val roomKotlin = Room(
-        cover = "картинка",
-        title = "Котлинка",
-        members = mutableListOf()
-    )
+class Participant(
+    val nickname: String,
+    val avatar: String,
+    var status: Status,
+)
 
-    println("Обложка: ${roomKotlin.cover}")
-    println("Название комнаты: ${roomKotlin.title}")
-    println("Участники: ${roomKotlin.members.map { it.username }}")
-
-    val newMemberName = newMember()
-
-    if (newMemberName.isNullOrBlank()) {
-        println("Ошибка: ник не может быть пустым.")
-        return
-    }
-
-    val newStatus = newStatus() ?: Status.MIC_OFF
-    val newMember = Member(newMemberName, newStatus)
-    roomKotlin.members.add(newMember)
-
-    println("Участник комнаты ${roomKotlin.title} с ником $newMemberName имеет статус '$newStatus'\n")
-
-    println("Участники комнаты ${roomKotlin.title}: ")
-    roomKotlin.members.forEach { println(it.username) }
+enum class Status {
+    SPEAKING,
+    MIC_OFF,
+    MUTED,
 }
 
 class Room(
-    val cover: String,
-    val title: String,
-    val members: MutableList<Member>
-)
-
-class Member(
-    val username: String,
-    var status: Status
+    var title: String,
+    var cover: String,
 ) {
-    override fun toString(): String = "$username (статус: $status)"
-}
+    var participants = mutableListOf<Participant>()
 
-enum class Status {
-    SPEAKING, // разговаривает
-    MIC_OFF,  // микрофон выключен
-    MUTED     // пользователь заглушен
-}
+    fun addParticipant(participant: Participant) {
+        participants.add(participant)
+        println("Участник ${participant.nickname} добавлен в комнату '$title'")
+    }
 
-fun newMember(): String? {
-    println("Пользователя с каким ником добавить?")
-    return readlnOrNull()?.trim()
-}
+    fun changeStatusToParticipant(nick: String, newStatus: Status) {
+        print("Введите никнейм участника: ")
+        val nick = readln().trim()
 
-fun newStatus(): Status? {
-    println("Какой статус у пользователя? (разговаривает, микрофон выключен, пользователь заглушен)")
+        print("Новый статус (1 — разговаривает, 2 — микрофон выключен, 3 — заглушен): ")
+        val choice = readln().trim()
 
-    val input = readlnOrNull()?.trim() ?: return null
+        val newStatus = when (choice) {
+            "1" -> Status.SPEAKING
+            "2" -> Status.MIC_OFF
+            "3" -> Status.MUTED
+            else -> {
+                println("Ошибка: неверный номер статуса. Используйте 1, 2 или 3.")
+                return
+            }
+        }
 
-    return when (input) {
-        "разговаривает" -> Status.SPEAKING
-        "микрофон выключен" -> Status.MIC_OFF
-        "пользователь заглушен" -> Status.MUTED
-        else -> {
-            println("Неизвестный статус: '$input'. Допустимые значения: разговаривает, микрофон выключен, пользователь заглушен.")
-            null
+        for (p in participants) {
+            if (p.nickname == nick) {
+                p.status = newStatus
+                println("Статус участника $nick обновлён.")
+                return
+            }
+        }
+        println("Ошибка: участник $nick не найден.")
+    }
+
+    fun printParticipants() {
+        println("\nУчастники комнаты '$title':")
+        for (participant in participants) {
+            println("  ${participant.nickname} Аватар: ${participant.avatar} Статус: '${getStatus(participant.status)}'")
         }
     }
+
+    fun getStatus(status: Status): String {
+        return when (status) {
+            Status.SPEAKING -> "разговаривает"
+            Status.MIC_OFF -> "микрофон выключен"
+            Status.MUTED -> "заглушен"
+        }
+    }
+}
+
+fun main() {
+    val chatRoom = Room("Котлинка", "(картинка)")
+
+    val kuz = Participant(
+        nickname = "Кузя",
+        avatar = "(картинка Кузи)",
+        status = Status.SPEAKING,
+    )
+
+    val bob = Participant(
+        nickname = "Боб",
+        avatar = "(картинка Боба)",
+        status = Status.MIC_OFF,
+    )
+
+    chatRoom.addParticipant(kuz)
+    chatRoom.addParticipant(bob)
+
+    chatRoom.printParticipants()
+
+    chatRoom.changeStatusToParticipant(" ", Status.SPEAKING)
+
+    chatRoom.printParticipants()
 }
