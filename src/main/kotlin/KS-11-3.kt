@@ -19,11 +19,16 @@ class Room(
     var participants = mutableListOf<Participant>()
 
     fun addParticipant(participant: Participant) {
+        if (participants.any { it.nickname == participant.nickname }) {
+            println("Участник с никнеймом '${participant.nickname}' уже существует в комнате.")
+            return
+        }
+
         participants.add(participant)
-        println("Участник ${participant.nickname} добавлен в комнату '$title'")
+        println("Ошибка: участник ${participant.nickname} добавлен в комнату '$title'")
     }
 
-    fun changeStatusToParticipant(nick: String, newStatus: Status) {
+    fun changeStatusToParticipant() {
         print("Введите никнейм участника: ")
         val nick = readln().trim()
 
@@ -86,7 +91,7 @@ fun main() {
 
     chatRoom.printParticipants()
 
-    chatRoom.changeStatusToParticipant(" ", Status.SPEAKING)
+    chatRoom.changeStatusToParticipant()
 
     chatRoom.printParticipants()
 }
