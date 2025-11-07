@@ -14,7 +14,6 @@ class Forum {
     val members: MutableMap<Int, ForumMember> = mutableMapOf()
     val messages: MutableList<ForumMessage> = mutableListOf()
     var nextUserId: Int = 1
-    //var nextMessageId: Int = 1
 
     fun createNewUser(userName: String): ForumMember {
         val newUser = ForumMember(nextUserId++, userName)
