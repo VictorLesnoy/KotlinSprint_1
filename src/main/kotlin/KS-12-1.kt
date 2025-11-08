@@ -1,11 +1,14 @@
 package org.example
 
-class weather(dayT: Int, nightT: Int, rainfall: Boolean) {
+class Weather {
+    var dayT: Int = 0
+    var nightT: Int = 0
+    var rainfall: Boolean = false
 
-    init {
+    fun printWeather() {
         println(
             "Температура дневная $dayT, температура ночная $nightT, ${
-                if (rainfall == true) {
+                if (rainfall) {
                     "осадки"
                 } else {
                     "без осадков"
@@ -16,6 +19,17 @@ class weather(dayT: Int, nightT: Int, rainfall: Boolean) {
 }
 
 fun main() {
-    val weather1 = weather(15, -2, false)
-    val weather2 = weather(+10, -2, true)
+    val weather1 = Weather()
+    val weather2 = Weather()
+
+    weather1.dayT = 15
+    weather1.nightT = -2
+    weather1.rainfall = false
+
+    weather2.dayT = 10
+    weather2.nightT = -2
+    weather2.rainfall = true
+
+    weather1.printWeather()
+    weather2.printWeather()
 }
