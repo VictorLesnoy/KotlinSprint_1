@@ -12,8 +12,8 @@ fun main() {
 
     val weatherMap = mutableMapOf<Int, WeatherStatement>()
     for (i in 1..30) {
-        val randomDayT = Random.nextInt(-35, 35)
-        val randomNightT = Random.nextInt(-35, 35)
+        val randomDayT = RandomT()
+        val randomNightT = RandomT()
         val randomRainfall = Random.nextBoolean()
         val weather = WeatherStatement(randomDayT, randomNightT, randomRainfall)
         weatherMap[i] = weather
@@ -34,3 +34,5 @@ fun main() {
 fun Iterable<Int>.average(): Double {
     return this.sum().toDouble() / this.count()
 }
+
+fun RandomT(): Int { return (-35..35).random() }
