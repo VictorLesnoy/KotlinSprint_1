@@ -20,7 +20,7 @@ class PhoneContacts(
 }
 
 fun main() {
-    var contacts = mutableListOf<PhoneContacts>()
+    val contacts = mutableListOf<PhoneContacts>()
     var newContact = ""
     do {
         println("Введите имя контакта: ")
