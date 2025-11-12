@@ -6,11 +6,7 @@ class WeatherStatement(
     var dayT: Int,
     var nightT: Int,
     var rainfall: Boolean,
-) {
-    fun Iterable<Int>.average(): Double {
-        return this.sum().toDouble() / this.count()
-    }
-}
+)
 
 fun main() {
 
@@ -34,7 +30,6 @@ fun main() {
     println("Средняя ночная температура: ${"%.2f".format(avgNightTemp)}°C")
     println("Количество дождливых дней $rainyDays")
 }
-
 
 fun randomT(): Int {
     return (-35..35).random()
