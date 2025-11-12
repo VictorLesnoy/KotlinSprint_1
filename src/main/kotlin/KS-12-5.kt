@@ -2,18 +2,22 @@ package org.example
 
 import kotlin.random.Random
 
-class WeatherStatement (
+class WeatherStatement(
     var dayT: Int,
     var nightT: Int,
     var rainfall: Boolean,
-)
+) {
+    fun Iterable<Int>.average(): Double {
+        return this.sum().toDouble() / this.count()
+    }
+}
 
 fun main() {
 
     val weatherMap = mutableMapOf<Int, WeatherStatement>()
     for (i in 1..30) {
-        val randomDayT = RandomT()
-        val randomNightT = RandomT()
+        val randomDayT = randomT()
+        val randomNightT = randomT()
         val randomRainfall = Random.nextBoolean()
         val weather = WeatherStatement(randomDayT, randomNightT, randomRainfall)
         weatherMap[i] = weather
@@ -31,8 +35,7 @@ fun main() {
     println("Количество дождливых дней $rainyDays")
 }
 
-fun Iterable<Int>.average(): Double {
-    return this.sum().toDouble() / this.count()
-}
 
-fun RandomT(): Int { return (-35..35).random() }
+fun randomT(): Int {
+    return (-35..35).random()
+}
