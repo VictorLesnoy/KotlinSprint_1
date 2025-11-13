@@ -30,8 +30,7 @@ fun main() {
 
     println("Компании, которые есть в телефонной книге:")
     val companies = contacts
-        .map { it.company }
-        .filterNotNull()
+        .mapNotNull { it.company }
         .distinct()
     companies.forEach { println("- $it") }
 }
