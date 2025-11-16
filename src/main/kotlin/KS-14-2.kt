@@ -5,11 +5,18 @@ open class Ship(
     val speed: Int,
     val tonnage: Int,
     val capacity: Int,
-) {
+)
+class LinerShip(
+    type: String,
+    speed: Int,
+    tonnage: Int,
+    capacity: Int,
+): Ship(type, speed, tonnage, capacity) {
     fun shkafut() {
         println("Лайнер выдвигает горизонтальный трап со шкафута.")
     }
 }
+
 class CargoShip(
     type: String,
     speed: Int,
@@ -32,7 +39,7 @@ class IceBreaker(
     }
 }
 fun main() {
-    val ship1 = Ship("Лайнер",100, 900, 5000)
+    val ship1 = LinerShip("Лайнер",100, 900, 5000)
     val ship2 = CargoShip("Грузовой",50, 10000, 100)
     val ship3 = IceBreaker("Ледокол",50, 5000, 250)
 
