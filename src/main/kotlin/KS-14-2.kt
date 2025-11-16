@@ -1,6 +1,6 @@
 package org.example
 
-open class Ship(
+abstract class Ship(
     val type: String,
     val speed: Int,
     val tonnage: Int,
