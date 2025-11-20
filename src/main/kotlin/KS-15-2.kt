@@ -21,6 +21,7 @@ class WeatherServer {
             is Temperature -> {
                 println("Температура в городе ${stats.location}: ${stats.temperature}.")
             }
+
             is PrecipitationAmount -> {
                 println("В городе ${stats.location} выпало ${stats.precipitationAmount} мм осадка ${stats.precipitation}.")
             }
