@@ -1,8 +1,6 @@
 package org.example
 
-abstract class WeatherStationStats {
-
-}
+abstract class WeatherStationStats
 
 class Temperature(
     val location: String,
