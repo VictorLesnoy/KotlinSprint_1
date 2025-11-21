@@ -1,30 +1,52 @@
 package org.example
 
-interface Movable {
-
-    fun move()
-
+interface Flyable {
+    fun fly()
 }
 
-abstract class Creatures : Movable {
+interface Swimmable {
+    fun swim()
+}
+
+interface Walkable {
+    fun walk()
+}
+
+abstract class Creatures {
     abstract val name: String
 }
 
-class crucian(override val name: String) : Creatures() {
-    override fun move() {
+class crucian(override val name: String) : Creatures(), Swimmable {
+    override fun swim() {
         println("$name плавает под водой.")
     }
 }
 
-class seagull( override val name: String = "Чайка") : Creatures() {
-    override fun move() {
-        println("$name летает в небе и плавает по воде.")
+class seagull(override val name: String = "Чайка") : Creatures(), Flyable, Swimmable, Walkable {
+    override fun fly() {
+        println("$name летает в небе.")
+    }
+
+    override fun swim() {
+        println("$name плавает по воде.")
+    }
+
+    override fun walk() {
+        println("$name ходит по берегу.")
     }
 }
 
-class duck( override val name: String = "Утка") : Creatures() {
-    override fun move() {
-        println("$name летает в небе и плавает по воде.")
+class duck( override val name: String = "Утка") : Creatures(), Flyable, Swimmable, Walkable {
+    override fun fly() {
+        println("$name летает в небе.")
+    }
+
+    override fun swim() {
+        println("$name плавает по воде.")
+    }
+
+    override fun walk() {
+        println("$name ходит по берегу.")
     }
 }
 
@@ -33,7 +55,13 @@ fun main() {
     val bird1 = seagull()
     val bird2 = duck()
 
-    fish.move()
-    bird1.move()
-    bird2.move()
+    fish.swim()
+
+    bird1.fly()
+    bird1.swim()
+    bird1.walk()
+
+    bird2.fly()
+    bird2.swim()
+    bird2.walk()
 }
