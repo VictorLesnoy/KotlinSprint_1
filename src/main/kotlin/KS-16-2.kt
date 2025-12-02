@@ -1,22 +1,20 @@
 package org.example
 
-class Circle {
-    private val Pi = 3.14
+class Circle(val radius: Double = 10.0) {
 
-    val radius = 10
-    fun length() {
-    println("Длина окружности равна ${2*Pi*radius}")
+    fun length(): Double {
+        return 2 * Pi * radius
     }
 
-    fun area() {
-        println("Площадь окружности равна ${Pi*radius*radius}")
+    fun area(): Double {
+        return Pi * radius * radius
     }
 }
 
 fun main() {
     val circle = Circle()
-    circle.length()
-    circle.area()
+    println("Длина окружности: ${circle.length()}")
+    println("Площадь круга: ${circle.area()}")
 }
 
-
+private const val Pi = 3.14
