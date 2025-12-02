@@ -1,15 +1,15 @@
 package org.example
 
-import kotlin.random.Random
-
 class Cube {
-    fun roll() {
-        val randomNumber = Random().nextInt(1,7)
-        println("На кубике выпало $randomNumber")
+
+    fun roll(): Int {
+        val diceRange = 1..6
+        return diceRange.random()
+
     }
 }
 
 fun main() {
     val dice = Cube()
-    dice.roll()
+    println("На кубике выпало ${dice.roll()}")
 }
