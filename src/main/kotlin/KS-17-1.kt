@@ -7,8 +7,9 @@ class Quiz {
 
     var answer = "зеленая"
         get() = field
-        set(value: String) {
-            field = "желтая"
+        set(value) {
+            val value = "желтая"
+            field = value
         }
 
 }
