@@ -8,7 +8,6 @@ class Quiz {
     var answer = "зеленая"
         get() = field
         set(value) {
-            val value = "желтая"
             field = value
         }
 
@@ -19,6 +18,6 @@ fun main() {
     println("Внимание, вопрос: ${quiz.question}")
     println("Ответ: ${quiz.answer}")
 
-    quiz.answer = "синяя"
+    quiz.answer = "желтая"
     println("Новый ответ: ${quiz.answer}")
 }
