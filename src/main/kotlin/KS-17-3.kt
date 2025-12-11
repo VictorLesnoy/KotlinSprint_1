@@ -1,22 +1,27 @@
 package org.example
 
-class Folder(var name: String, var files: Int, secret: Boolean) {
-    var secret = secret
-        get() = field
+class Folder(name: String, files: Int, var secret: Boolean) {
+
+    var name = name
         set(value) {
-            field = value
-            if (value) {
-                name = "Скрытая папка"
-                files = 0
-            }
+            field = if (secret) "скрытая папка" else value
+        }
+
+
+    var files = files
+        set(value) {
+            field = if (secret) 0 else value
         }
 
     init {
-        this.secret = secret
+        this.name = name
+        this.files = files
     }
+
 }
+
 
 fun main() {
     var folder = Folder("Первая", 10, true)
-    println("Папка '${folder.name}', состоит из ${folder.files} вайлов, имеет гриф '${if (folder.secret == true) "секретно" else "не секретно"}' ")
+    println("Папка '${folder.name}', состоит из ${folder.files} вайлов, имеет гриф '${if (folder.secret) "секретно" else "не секретно"}' ")
 }
