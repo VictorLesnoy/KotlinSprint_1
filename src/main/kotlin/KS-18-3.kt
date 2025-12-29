@@ -1,7 +1,9 @@
 open class Animals(private val name: String, private val food: String) {
+
     open fun eat(): String {
         return "$name -> $food."
     }
+
 }
 
 class Fox : Animals("Лиса", "ягоды")
