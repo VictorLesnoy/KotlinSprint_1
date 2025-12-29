@@ -2,16 +2,16 @@ package org.example
 
 import kotlin.random.Random
 
-open class Dices (private val edges: Int){
+open class Dices (open val edges: Int = 0){
     open fun rollTheDices(): Int {
      val result = Random.nextInt(1, edges + 1)
         return result
     }
 }
 
-class Dice4 : Dices(4)
-class Dice6 : Dices(6)
-class Dice8 : Dices(8)
+class Dice4 : Dices() {override val edges: Int = 4}
+class Dice6 : Dices() {override val edges: Int = 6}
+class Dice8 : Dices() {override val edges: Int = 8}
 
 fun main() {
     val dice4 = Dice4()
