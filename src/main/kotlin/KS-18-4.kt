@@ -17,7 +17,7 @@ class Rectangular(
     override fun volume() = width * height * length
 }
 
-class cube(
+class Cube(
     name: String,
     val side: Double,
 ) : Parcel(name) {
@@ -26,7 +26,7 @@ class cube(
 
 fun main() {
     val parcel1: Parcel = Rectangular("коробка 1", 10.0, 20.0, 30.0)
-    val parcel2: Parcel = cube("коробка 2", 5.0)
+    val parcel2: Parcel = Cube("коробка 2", 5.0)
 
     println("Объём отправления '${parcel1.name}' равен ${parcel1.volume()}")
     println("Объём отправления '${parcel2.name}' равен ${parcel2.volume()}")
