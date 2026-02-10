@@ -11,6 +11,6 @@ fun main() {
     println("Навык, в котором у игрока наибольшее количество очков опыта: ${skills.maxCategory()}")
 }
 
-fun Map<String, Int>.maxCategory(): String {
-    return this.maxBy { it.value }.key
+fun Map<String, Int>.maxCategory(): String? {
+    return this.maxByOrNull { it.value }?.key
 }
