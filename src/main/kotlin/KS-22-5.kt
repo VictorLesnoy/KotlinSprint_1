@@ -14,5 +14,6 @@ fun main() {
         "12/12/2025",
         105577,
     )
-    println("Название галактики ${galactic.somethingName}\nописание '${galactic.somethingDescription}'\nобнаружена ${galactic.somethingDate}\nрасстояние до неё ${galactic.somethingDistance} световых лет")
+    val (name, description, date, distance) = galactic
+    println("Название галактики $name\nописание '$description'\nобнаружена $date\nрасстояние до неё $distance световых лет")
 }
