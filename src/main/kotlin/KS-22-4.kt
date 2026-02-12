@@ -1,32 +1,43 @@
 package org.example
-// Столько букв в задании - я не осилил.
-// Написал то, что смог понять.
-// Хотя не понял зачем это и к чему.
-// Надеюсь на пояснительную бригаду.
-// Не хочется списывать - хочется самому дойти до решения.
-// Хоть что-то угадал? )))
-class MainScreenViewModel() {
-    fun loadData() {
-        println("Отсутствие данных")
-        println("Загрузка данных")
-        println("Наличие загруженных данных")
-    }
-
-    override fun toString(): String {
-        return "отсутствие данных\nзагрузка данных\nналичие загруженных данных"
-    }
-}
+// Я списал это у AndroidSprint AI Mentor
+// Я искал в инете объяснения каждой строке,
+// но до конца не понимаю - почему именно это и именно так.
+// Чувствую себя, как первоклашка, которому дали решить интеграл.
+import kotlin.concurrent.thread
 
 data class MainScreenState(
-    val data: String,
+    val data: String? = null,
     val isLoading: Boolean = false
 )
 
+class MainScreenViewModel {
+    var mainScreenState = MainScreenState()
+        private set
+
+    fun loadData(onStateChanged: (MainScreenState) -> Unit) {
+
+        thread {
+
+            mainScreenState = MainScreenState(data = null, isLoading = false)
+            onStateChanged(mainScreenState)
+            Thread.sleep(1000)
+
+            mainScreenState = MainScreenState(data = null, isLoading = true)
+            onStateChanged(mainScreenState)
+            Thread.sleep(2000)
+
+            mainScreenState = MainScreenState(data = "Данные загружены", isLoading = false)
+            onStateChanged(mainScreenState)
+        }
+    }
+}
+
 fun main() {
-    val mainScreen = MainScreenState("работает")
-    val mainScreen1 = mainScreen.copy(isLoading = true)
-    println(mainScreen1)
-    val mainView = MainScreenViewModel()
-    println(mainView)
-    println(mainView.loadData())
+    val viewModel = MainScreenViewModel()
+
+    viewModel.loadData { state ->
+        println("Текущий стейт: $state")
+    }
+
+    Thread.sleep(4000)
 }
