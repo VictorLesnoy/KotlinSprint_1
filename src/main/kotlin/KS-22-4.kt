@@ -14,20 +14,18 @@ class MainScreenViewModel {
     var mainScreenState = MainScreenState()
         private set
 
-    fun loadData(onStateChanged: (MainScreenState) -> Unit) {
-
+    fun loadData() {
         thread {
-
             mainScreenState = MainScreenState(data = null, isLoading = false)
-            onStateChanged(mainScreenState)
+            println("Стейт обновлён: $mainScreenState")
             Thread.sleep(1000)
 
-            mainScreenState = MainScreenState(data = null, isLoading = true)
-            onStateChanged(mainScreenState)
+            mainScreenState = mainScreenState.copy(isLoading = true)
+            println("Стейт обновлён: $mainScreenState")
             Thread.sleep(2000)
 
-            mainScreenState = MainScreenState(data = "Данные загружены", isLoading = false)
-            onStateChanged(mainScreenState)
+            mainScreenState = mainScreenState.copy(data = "Данные загружены", isLoading = false)
+            println("Стейт обновлён: $mainScreenState")
         }
     }
 }
@@ -35,9 +33,7 @@ class MainScreenViewModel {
 fun main() {
     val viewModel = MainScreenViewModel()
 
-    viewModel.loadData { state ->
-        println("Текущий стейт: $state")
-    }
+    viewModel.loadData ()
 
     Thread.sleep(4000)
 }
